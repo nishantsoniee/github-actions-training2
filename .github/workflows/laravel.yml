@@ -1,0 +1,21 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  laravel-deployment:
+
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout and fetch
+        working-directory: /var/www/html/github-actions-training2
+        run: |
+          git checkout -- .
+          git pull origin master
+      - name: Install Dependencies
+        working-directory: /var/www/html/github-actions-training2
+        run: |
+          composer install --no-dev
